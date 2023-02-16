@@ -2,7 +2,7 @@
 ![CodeSize](https://img.shields.io/github/languages/code-size/carm-outsource/QuickShop-Hikari-Cracker)
 [![Download](https://img.shields.io/github/downloads/carm-outsource/QuickShop-Hikari-Cracker/total)](https://github.com/carm-outsource/QuickShop-Hikari-Cracker/releases)
 [![Java CI with Maven](https://github.com/carm-outsource/QuickShop-Hikari-Cracker/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/carm-outsource/QuickShop-Hikari-Cracker/actions/workflows/maven.yml)
-![Support](https://img.shields.io/badge/Minecraft-Java%201.13--Latest-blue)
+![Support](https://img.shields.io/badge/Minecraft-Java%201.18--Latest-blue)
 ![](https://visitor-badge.glitch.me/badge?page_id=quickshop-hikari-cracker.readme)
 
 这似乎是一个可以绕过 QuickShop-Hikari 最新版对中国大陆使用限制的插件。
