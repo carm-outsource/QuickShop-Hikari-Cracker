@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <properties>
+        <project.jdk.version>8</project.jdk.version>
+        <project.package>cc.carm.plugin.quickshopcracker</project.package>
+
+        <maven.compiler.source>${project.jdk.version}</maven.compiler.source>
+        <maven.compiler.target>${project.jdk.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    </properties>
+    <groupId>cc.carm.plugin</groupId>
+    <artifactId>quickshop-cracker</artifactId>
+    <version>1.0.0</version>
+
+    <name>QuickShop-Hikari-Cracker</name>
+    <description>轻便、高效、实时的用户前缀系统。</description>
+    <url>https://github.com/carm-outsource/QuickShop-Hikari-Cracker</url>
+
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>https://github.com/carm-outsource/QuickShop-Hikari-Cracker/actions/workflows/maven.yml</url>
+    </ciManagement>
+
+    <developers>
+        <developer>
+            <id>CarmJos</id>
+            <name>Carm Jos</name>
+            <email>carm@carm.cc</email>
+            <url>https://work.carm.cc</url>
+            <roles>
+                <role>Main Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>https://opensource.org/licenses/GPL-3.0</url>
+        </license>
+    </licenses>
+
+    <repositories>
+
+        <repository>
+            <id>maven-central</id>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/public/</url>
+        </repository>
+
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+
+        <repository>
+            <id>luck-repo</id>
+            <url>https://repo.lucko.me/</url>
+        </repository>
+
+        <repository>
+            <id>EasyPlugin</id>
+            <url>https://raw.githubusercontent.com/CarmJos/EasyPlugin/repo/</url>
+        </repository>
+
+        <repository>
+            <id>carm-repo</id>
+            <name>Carm's Repo</name>
+            <url>https://repo.carm.cc/repository/maven-public/</url>
+        </repository>
+
+    </repositories>
+
+    <distributionManagement>
+        <downloadUrl>https://github.com/carm-outsource/QuickShop-Hikari-Cracker/releases</downloadUrl>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/carm-outsource/QuickShop-Hikari-Cracker</url>
+        </repository>
+    </distributionManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.13-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/.asset/</directory>
+                            <useDefaultExcludes>true</useDefaultExcludes>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.basedir}/api-docs/</directory>
+                            <useDefaultExcludes>true</useDefaultExcludes>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${project.jdk.version}</source>
+                    <target>${project.jdk.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgument>-parameters</compilerArgument>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <finalName>${project.name}-${project.version}</finalName>
+                    <outputDirectory>${project.basedir}/.asset/</outputDirectory>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <minimizeJar>true</minimizeJar>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/MANIFEST.MF</exclude>
+                                <exclude>META-INF/*.txt</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
+                <configuration>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+
+</project>
